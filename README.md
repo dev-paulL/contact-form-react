@@ -1,50 +1,53 @@
-# React + TypeScript + Vite
+# Frontend Mentor - Contact form solution
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a solution to the [Contact form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/contact-form--G-hYlqKJj). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### The challenge
 
-## Expanding the ESLint configuration
+#### **Users should be able to:**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Complete the form and see a success toast message upon successful submission
+- Receive form validation messages if:
+  - A required field has been missed
+  - The email address is not formatted correctly
+- Complete the form only using their keyboard
+- Have inputs, error messages, and the success message announced on their screen reader
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
 
-- Configure the top-level `parserOptions` property like this:
+### Screenshot
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+![](./screenshot.jpg)
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Links
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+
+## **Features** 🚀
+
+- 📝 **Collects user data**: First Name, Last Name, Email, Query Type, Message, and Consent.
+- ✅ **Form validation** using `react-hook-form` and `zod`.
+- ⚠️ **Displays real-time error messages** for invalid inputs.
+- 🎉 **Shows a success message** after the form is submitted.
+- ♿ **Accessible form** with ARIA labels and descriptions.
+- ✨ **Animated success message** using Framer Motion.
+
+## **My Process** 🛠️
+
+- 🔍 **Analyzed** the screenshots and the "User should be able to" requirements.
+- 🎨 **Imported** fonts, colors, and image assets.
+- 🎛️ **Created** SCSS variables and mixins for reusable styles.
+- 📝 **Added** form logic using `react-hook-form` and a Zod schema for validation.
+- 🖥️ **Implemented** the desktop design first this time.
+- 📱 **Adapted** the form to mobile design.
+- ✨ **Created** the Success Message and animated it with Framer Motion.
+- ♿ **Improved accessibility** with ARIA attributes and visual indicators (outlines on inputs).
+- 🦻⌨️ **Tested** that the form is accessible with keyboard only & screen readers.
+
+I plan to add automated tests.
+
+**Any feedback welcome!**
