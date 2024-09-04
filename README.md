@@ -1,6 +1,6 @@
 # Frontend Mentor - Contact form solution
 
-This is a solution to the [Contact form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/contact-form--G-hYlqKJj). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Contact form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/contact-form--G-hYlqKJj). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Overview
 
@@ -19,13 +19,12 @@ This is a solution to the [Contact form challenge on Frontend Mentor](https://ww
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
+![](./screenshot_desktop.png)
 
 ### Links
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [https://www.dev-paull.github.io/contact-form-react/](https://www.dev-paull.github.io/contact-form-react/)
 
 ## **Features** 🚀
 
@@ -48,6 +47,6 @@ This is a solution to the [Contact form challenge on Frontend Mentor](https://ww
 - ♿ **Improved accessibility** with ARIA attributes and visual indicators (outlines on inputs).
 - 🦻⌨️ **Tested** that the form is accessible with keyboard only & screen readers.
 
-I plan to add automated tests.
+I plan to add automated tests. Using `react-hook-form` and `zod` might be overkill for a simple contact form like this, but I’m working on projects with more complex forms, so it’s good practice.
 
-**Any feedback welcome!**
+**Any feedback is welcome!**

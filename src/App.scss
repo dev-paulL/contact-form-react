@@ -92,6 +92,10 @@ label {
   color: $grey900;
   display: inline-block;
   padding: 0.5rem 0;
+  .requiredAsterisk {
+    color: $green600;
+    margin-left: 0.2rem;
+  }
 }
 
 textarea {
@@ -123,12 +127,6 @@ button {
 .text {
   display: block;
   @include hoverOutline;
-}
-
-label.required::after {
-  content: "*";
-  color: $green600;
-  margin-left: 0.2rem;
 }
 
 input[type="radio"],
