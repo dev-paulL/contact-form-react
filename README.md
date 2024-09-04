@@ -23,7 +23,7 @@ This is a solution to the [Contact form challenge on Frontend Mentor](https://ww
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [https://www.frontendmentor.io/solutions/accessible-form-with-react-typescript-zod-react-hook-form-scss-BBGtFiJ6ld](https://www.frontendmentor.io/solutions/accessible-form-with-react-typescript-zod-react-hook-form-scss-BBGtFiJ6ld)
 - Live Site URL: [https://www.dev-paull.github.io/contact-form-react/](https://www.dev-paull.github.io/contact-form-react/)
 
 ## **Features** 🚀
@@ -46,6 +46,7 @@ This is a solution to the [Contact form challenge on Frontend Mentor](https://ww
 - ✨ **Created** the Success Message and animated it with Framer Motion.
 - ♿ **Improved accessibility** with ARIA attributes and visual indicators (outlines on inputs).
 - 🦻⌨️ **Tested** that the form is accessible with keyboard only & screen readers.
+- 🚀 **Deployed** on Github pages via Github Action.
 
 I plan to add automated tests. Using `react-hook-form` and `zod` might be overkill for a simple contact form like this, but I’m working on projects with more complex forms, so it’s good practice.
 

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import IconSuccessCheck from "./icons/IconSuccessCheck";
 export default function MessageSentPopup() {
   /* Animated "toast" message form submission success */
   /* Animated using framer-motion, I wanted to make it look like it's dropping from the top, I used the same animation as I used for the cart in my other project */
@@ -14,7 +15,7 @@ export default function MessageSentPopup() {
       aria-atomic="true"
     >
       <div>
-        <img src="../src/assets/images/icon-success-check.svg" alt="" aria-hidden="true" /> <h2>Message Sent!</h2>{" "}
+        <IconSuccessCheck /> <h2>Message Sent!</h2>{" "}
       </div>
       <p>Thanks for completing the form, we'll be in touch soon!</p>
     </motion.div>
