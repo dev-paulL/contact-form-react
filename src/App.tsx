@@ -7,6 +7,7 @@ import { useState } from "react";
 import MessageSentPopup from "./components/MessageSentPopup";
 import { AnimatePresence } from "framer-motion";
 import RequiredAsterisk from "./components/RequiredAsterisk";
+import ErrorWrapper from "./components/ErrorWrapper";
 
 const errorRequired = "This field is required";
 
@@ -34,13 +35,13 @@ function App() {
   const onSubmit: SubmitHandler<FormData> = (data) => {
     /* When the form is validated and the user clicks the submit button, 
     shows the result in console (but they could be manipulated instead or sent to the server), 
-    updates the isFormCompleted state that will trigger the toast success message to show for 3 seconds & reset the form */
+    updates the isFormCompleted state that will trigger the toast success message to show for 5 seconds & reset the form */
     setIsFormCompleted(true);
     console.log(data);
     reset();
     setTimeout(() => {
       setIsFormCompleted(false);
-    }, 3000);
+    }, 5000);
   };
 
   return (
@@ -52,7 +53,7 @@ function App() {
         The inputs could be refactored into a reusable component but since the form is relatively simple I decided not to*/}
       <form onSubmit={handleSubmit(onSubmit)} aria-labelledby="contactFormTitle">
         <h1 id="contactFormTitle">Contact Us</h1>
-        
+
         <fieldset>
           {/* Legends have the sr-only class & are "hidden" for sighted users, but the screen readers still have access to it */}
           <legend className="sr-only">Personal Information</legend>
@@ -64,13 +65,14 @@ function App() {
               {/* Each required input needs the aria-required attribute set to true to notify the visually impaired users.
               Its error message id has to be assigned to the aria-describedby attribute.  */}
               <input
-                aria-required="true"
+                autoComplete="given-name"
+                required
                 aria-describedby="firstName-error"
                 className={`text ${errors.firstName ? "inputError" : ""}`}
                 id="firstName"
                 {...register("firstName")} // react-hook-form
               />
-              {errors.firstName && <ErrorMessage id="firstName-error" error={errors.firstName.message} />}
+              <ErrorWrapper id="firstName-error">{errors.firstName && <ErrorMessage error={errors.firstName.message} />}</ErrorWrapper>
             </div>
 
             <div>
@@ -78,13 +80,14 @@ function App() {
                 Last Name <RequiredAsterisk />
               </label>
               <input
-                aria-required="true"
+                autoComplete="family-name"
+                required
                 id="lastName"
                 aria-describedby="lastName-error"
                 className={`text ${errors.lastName ? "inputError" : ""}`}
                 {...register("lastName")}
               />
-              {errors.lastName && <ErrorMessage id="lastName-error" error={errors.lastName.message} />}
+              <ErrorWrapper id="lastName-error">{errors.lastName && <ErrorMessage error={errors.lastName.message} />}</ErrorWrapper>
             </div>
           </div>
 
@@ -92,75 +95,58 @@ function App() {
             Email Address <RequiredAsterisk />
           </label>
           <input
-            aria-required="true"
+            autoComplete="email"
+            required
             aria-describedby="email-error"
             id="email"
             type="email"
             className={`text ${errors.email ? "inputError" : ""}`}
             {...register("email")}
           />
-          {errors.email && <ErrorMessage id="email-error" error={errors.email.message} />}
+          <ErrorWrapper id="email-error">{errors.email && <ErrorMessage error={errors.email.message} />}</ErrorWrapper>
         </fieldset>
 
         <fieldset>
-          <legend className="sr-only">Select One of the Following Queries</legend>
-
           <label className="required">
             Query Type <RequiredAsterisk />
           </label>
           <div className="inlineInputs">
             <div className="radioChoice">
-              <input
-                aria-required="true"
-                aria-describedby="queryType-error"
-                type="radio"
-                id="generalEnquiry"
-                value="generalEnquiry"
-                {...register("queryType")}
-              />
+              <input required aria-describedby="queryType-error" type="radio" id="generalEnquiry" value="generalEnquiry" {...register("queryType")} />
               <label htmlFor="generalEnquiry">General Enquiry</label>
             </div>
 
             <div className="radioChoice">
-              <input
-                aria-required="true"
-                aria-describedby="queryType-error"
-                type="radio"
-                id="supportRequest"
-                value="supportRequest"
-                {...register("queryType")}
-              />
+              <input required aria-describedby="queryType-error" type="radio" id="supportRequest" value="supportRequest" {...register("queryType")} />
               <label htmlFor="supportRequest">Support Request</label>
             </div>
-            {errors.queryType && <ErrorMessage id="queryType-error" error={errors.queryType.message} />}
+            <ErrorWrapper id="queryType-error">{errors.queryType && <ErrorMessage error={errors.queryType.message} />}</ErrorWrapper>
           </div>
         </fieldset>
 
-        <fieldset>
-          <legend className="sr-only">Message</legend>
-          <label className="required" htmlFor="message">
-            Message <RequiredAsterisk />
+        <label className="required" htmlFor="message">
+          Message <RequiredAsterisk />
+        </label>
+        <textarea
+          required
+          aria-describedby="message-error"
+          className={`text ${errors.message ? "inputError" : ""}`}
+          id="message"
+          {...register("message")}
+        ></textarea>
+        <ErrorWrapper id="message-error">{errors.message && <ErrorMessage error={errors.message.message} />}</ErrorWrapper>
+
+        <div className="checkboxWrapper">
+          <input required type="checkbox" id="consent" {...register("consent")} aria-describedby="consent-error" />
+          <label className="required" htmlFor="consent">
+            I consent to being contacted by the team <RequiredAsterisk />
           </label>
-          <textarea
-            aria-required="true"
-            aria-describedby="message-error"
-            className={`text ${errors.message ? "inputError" : ""}`}
-            id="message"
-            {...register("message")}
-          ></textarea>
-          {errors.message && <ErrorMessage id="message-error" error={errors.message.message} />}
+        </div>
+        <ErrorWrapper id="consent-error">{errors.consent && <ErrorMessage error={errors.consent.message} />}</ErrorWrapper>
 
-          <div className="checkboxWrapper">
-            <input aria-required="true" type="checkbox" id="consent" {...register("consent")} aria-describedby="consent-error" />
-            <label className="required" htmlFor="consent">
-              I consent to being contacted by the team <RequiredAsterisk />
-            </label>
-          </div>
-          {errors.consent && <ErrorMessage id="consent-error" error={errors.consent.message} />}
-        </fieldset>
-
-        <button type="submit" name="Send Message">Submit</button>
-
+        <button type="submit">
+          Submit
+        </button>
       </form>
     </main>
   );
