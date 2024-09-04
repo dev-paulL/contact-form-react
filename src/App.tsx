@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "./components/ErrorMessage";
 import { useState } from "react";
 import MessageSentPopup from "./components/MessageSentPopup";
+import { AnimatePresence } from "framer-motion";
 
 const errorRequired = "This field is required";
 const contactFormSchema = z.object({
@@ -20,21 +21,26 @@ type FormData = z.infer<typeof contactFormSchema>;
 
 function App() {
   const [isFormCompleted, setIsFormCompleted] = useState(false);
-  
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<FormData>({ resolver: zodResolver(contactFormSchema) });
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     setIsFormCompleted(true);
     console.log(data);
+    reset();
+    setTimeout(() => {
+      setIsFormCompleted(false);
+    }, 3000); 
   };
 
   return (
     <main>
-      {isFormCompleted && <MessageSentPopup />}
+      <AnimatePresence>{isFormCompleted && <MessageSentPopup />}</AnimatePresence>
       <form onSubmit={handleSubmit(onSubmit)}>
         <h1>Contact Us</h1>
 
