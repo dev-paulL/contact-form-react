@@ -50,7 +50,7 @@ function App() {
       <AnimatePresence>{isFormCompleted && <MessageSentPopup />}</AnimatePresence>
 
       {/* The form comports multiple <fieldset> that improve accessibility. The inputs are grouped by category 
-        The inputs could be refactored into a reusable component but since the form is relatively simple I decided not to*/}
+        The fields could be refactored into a reusable component but since the form is relatively simple I decided not to*/}
       <form onSubmit={handleSubmit(onSubmit)} aria-labelledby="contactFormTitle">
         <h1 id="contactFormTitle">Contact Us</h1>
 
@@ -62,11 +62,10 @@ function App() {
               <label className="required" htmlFor="firstName">
                 First Name <RequiredAsterisk />
               </label>
-              {/* Each required input needs the aria-required attribute set to true to notify the visually impaired users.
-              Its error message id has to be assigned to the aria-describedby attribute.  */}
+              {/* Its error wrapper id has to be assigned to the aria-describedby attribute.  */}
               <input
                 autoComplete="given-name"
-                required
+                aria-required="true"
                 aria-describedby="firstName-error"
                 className={`text ${errors.firstName ? "inputError" : ""}`}
                 id="firstName"
@@ -81,7 +80,7 @@ function App() {
               </label>
               <input
                 autoComplete="family-name"
-                required
+                aria-required="true"
                 id="lastName"
                 aria-describedby="lastName-error"
                 className={`text ${errors.lastName ? "inputError" : ""}`}
@@ -96,7 +95,7 @@ function App() {
           </label>
           <input
             autoComplete="email"
-            required
+            aria-required="true"
             aria-describedby="email-error"
             id="email"
             type="email"
@@ -112,12 +111,12 @@ function App() {
           </label>
           <div className="inlineInputs">
             <div className="radioChoice">
-              <input required aria-describedby="queryType-error" type="radio" id="generalEnquiry" value="generalEnquiry" {...register("queryType")} />
+              <input aria-required="true" aria-describedby="queryType-error" type="radio" id="generalEnquiry" value="generalEnquiry" {...register("queryType")} />
               <label htmlFor="generalEnquiry">General Enquiry</label>
             </div>
 
             <div className="radioChoice">
-              <input required aria-describedby="queryType-error" type="radio" id="supportRequest" value="supportRequest" {...register("queryType")} />
+              <input aria-required="true" aria-describedby="queryType-error" type="radio" id="supportRequest" value="supportRequest" {...register("queryType")} />
               <label htmlFor="supportRequest">Support Request</label>
             </div>
             <ErrorWrapper id="queryType-error">{errors.queryType && <ErrorMessage error={errors.queryType.message} />}</ErrorWrapper>
@@ -128,7 +127,7 @@ function App() {
           Message <RequiredAsterisk />
         </label>
         <textarea
-          required
+          aria-required="true"
           aria-describedby="message-error"
           className={`text ${errors.message ? "inputError" : ""}`}
           id="message"
@@ -137,7 +136,7 @@ function App() {
         <ErrorWrapper id="message-error">{errors.message && <ErrorMessage error={errors.message.message} />}</ErrorWrapper>
 
         <div className="checkboxWrapper">
-          <input required type="checkbox" id="consent" {...register("consent")} aria-describedby="consent-error" />
+          <input aria-required="true" type="checkbox" id="consent" {...register("consent")} aria-describedby="consent-error" />
           <label className="required" htmlFor="consent">
             I consent to being contacted by the team <RequiredAsterisk />
           </label>
