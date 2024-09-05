@@ -12,7 +12,7 @@ export default function MessageSentPopup() {
       className="messageSentPopup"
       aria-live="assertive"
       aria-atomic="true"
-      role="alert"
+      role="alert" 
     >
       <div>
         <IconSuccessCheck /> <h2>Message Sent!</h2>

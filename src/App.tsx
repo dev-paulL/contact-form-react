@@ -9,14 +9,14 @@ import { AnimatePresence } from "framer-motion";
 import RequiredAsterisk from "./components/RequiredAsterisk";
 import ErrorWrapper from "./components/ErrorWrapper";
 
-const errorRequired = "This field is required";
+/* const errorRequired = "This field is required"; */
 
 const contactFormSchema = z.object({
-  firstName: z.string().min(1, { message: errorRequired }),
-  lastName: z.string().min(1, { message: errorRequired }),
-  email: z.string().email("Please enter a valid email address").min(1, { message: errorRequired }),
+  firstName: z.string().min(1, { message: "First name is required" }),
+  lastName: z.string().min(1, { message: "Last name is required" }),
+  email: z.string().email("Please enter a valid email address").min(1, { message: "Email is required" }),
   queryType: z.enum(["generalEnquiry", "supportRequest"], { message: "Please select a query type" }),
-  message: z.string().min(1, { message: errorRequired }),
+  message: z.string().min(1, { message: "Message is required" }),
   consent: z.boolean().refine((value) => value === true, { message: "To submit this form, please consent to being contacted" }),
 });
 
