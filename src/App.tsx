@@ -98,7 +98,7 @@ function App() {
             aria-required="true"
             aria-describedby="email-error"
             id="email"
-            type="email"
+            
             className={`text ${errors.email ? "inputError" : ""}`}
             {...register("email")}
           />
